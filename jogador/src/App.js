@@ -9,12 +9,12 @@ import './global.css';
 class App extends Component {
 
   state = {
-    firebaseInitialized: false
+    firebaseInitialized: true
   }
 
   componentDidMount() {
-    firebase.isInitialized().then(result => {
-      this.setState({firebaseInitialized: result})
+    firebase.isInitialized().then(resultado => {
+      this.setState({firebaseInitialized: resultado})
     })
   }
 
