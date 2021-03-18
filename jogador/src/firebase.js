@@ -19,6 +19,7 @@ class Firebase {
     app.initializeApp(firebaseConfig);
 
     this.app = app.database();
+    
   }
 
   login(email, password) {
@@ -40,6 +41,11 @@ class Firebase {
       app.auth().onAuthStateChanged(resolve)
     })
   }
+
+  getCurrent() {
+    return app.auth().currentUser && app.auth().currentUser.email;
+  }
+  
 }
 
 export default new Firebase();

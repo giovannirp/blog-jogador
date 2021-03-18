@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import firebase from '../../firebase';
+import "./home.css";
 
 class Home extends Component {
   state = {
-    posts : []
+    posts: []
   };
 
   componentDidMount() {
-    firebase.app.ref('posts').once('value', (snapshot)=> {
+    firebase.app.ref('posts').once('value', (snapshot) => {
       let state = this.state;
       state.posts = [];
 
@@ -15,7 +16,7 @@ class Home extends Component {
         state.posts.push({
           key: childItem.key,
           titulo: childItem.val().titulo,
-          image: childItem.val().imagem,
+          image: childItem.val().image,
           descricao: childItem.val().descricao,
           autor: childItem.val().autor
         });
@@ -26,22 +27,18 @@ class Home extends Component {
   }
 
   render() {
-    console.log('consolando', this.state.post)
     return (
-      <section>
+      <section id="post">
         {this.state.posts.map((post) => {
-          console.log('consolando', post.titulo)
           return (
             <article key={post.key}>
-              <header>
-                <div>
-                  <strong>{post.titulo}</strong>
-                  <spna>{post.autor}</spna>
-                </div>
-              </header>
-              <img src={post.image} alt="Foto principal" />
+              <img src={post.image} alt={post.titulo} />
               <footer>
+                <div className="title">
+                  <strong>{post.titulo}</strong>
+                </div>
                 <p>{post.descricao}</p>
+                <strong className='autor'>Autor: </strong><span>{post.autor}</span>
               </footer>
             </article>
           )
