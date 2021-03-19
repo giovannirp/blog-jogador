@@ -11,7 +11,7 @@ import Dashboard from './components/Dashboard';
 class App extends Component {
 
   state = {
-    firebaseInitialized: true
+    firebaseInitialized: false
   }
 
   componentDidMount() {
@@ -25,9 +25,9 @@ class App extends Component {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path='/' component={Home} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/dashboard' component={Dashboard} />
         </Switch>
       </BrowserRouter>
     )

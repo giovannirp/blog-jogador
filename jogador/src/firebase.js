@@ -45,6 +45,10 @@ class Firebase {
   getCurrent() {
     return app.auth().currentUser && app.auth().currentUser.email;
   }
+
+  logout() {
+    return app.auth().signOut();
+  }
   
 }
 
