@@ -19,6 +19,8 @@ class Firebase {
     app.initializeApp(firebaseConfig);
 
     this.app = app.database();
+
+    this.getCarregando = this.getCarregando.bind(this);
     
   }
 
@@ -45,6 +47,14 @@ class Firebase {
   getCurrent() {
     return app.auth().currentUser && app.auth().currentUser.email;
   }
+
+  getCarregando() {
+    window.location.reload();
+  }
+
+  // getCurrentSpecifc() {
+  //   return app.auth().currentUser && app.auth().currentUser.email;
+  // }
 
   logout() {
     return app.auth().signOut();
